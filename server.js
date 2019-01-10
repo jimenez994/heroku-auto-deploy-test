@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const port = 8002; 
+const port = 8003; 
 const app = express();
 
 // app.use(bodyParser).urlencoded({ extended:  false });
@@ -12,7 +12,7 @@ app.use(express.json());
 //     res.send({message: "great it works?"});
 // })
 
-require("./server/config/mongoose");
+// require("./server/config/mongoose");
 require("./server/config/routes")(app);
 
 app.listen(port, () => {
