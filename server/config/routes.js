@@ -1,5 +1,6 @@
 
-const path = require("path")
+const path = require("path");
+const express = require("express");
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
