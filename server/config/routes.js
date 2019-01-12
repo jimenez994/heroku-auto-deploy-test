@@ -4,6 +4,9 @@ const express = require("express");
 
 module.exports = (app) => {
     
+    app.get('/user', (req, res) => {
+        res.send({message: "great!, is it working?"});
+    })
 
     // // Server static assets if in production
     // if(process.env.NODE_ENV === 'production'){
@@ -17,8 +20,5 @@ module.exports = (app) => {
 
     // }
 
-    app.get('/', (req, res) => {
-        res.send({message: "great!, is it working?"});
-    })
 
 }
