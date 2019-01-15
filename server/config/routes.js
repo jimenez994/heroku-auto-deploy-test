@@ -6,7 +6,7 @@ module.exports = (app) => {
     
     
     // // Server static assets if in production
-    // if(process.env.NODE_ENV === 'production'){
+    if(process.env.NODE_ENV === 'production'){
         // Set static folder
         app.use(express.static('client/build'));
         
@@ -15,7 +15,7 @@ module.exports = (app) => {
             res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
         })
         
-        // }
+    }
         
         app.get('/user', (req, res) => {
             res.send({message: "great!, is it working?"});
