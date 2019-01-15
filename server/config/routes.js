@@ -10,9 +10,12 @@ module.exports = (app) => {
         // Set static folder
         app.use(express.static('client/build'));
         
-        // Any route that gets hit will go to the index.html 
-        app.get('*', (req, res) => {
-            res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+        // // Any route that gets hit will go to the index.html 
+        // app.get('*', (req, res) => {
+        //     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+        // })
+        app.all("*", (req, res,next) => {
+            res.sendFile(path.resolve("./client/build/index.html"));
         })
         
     // }
