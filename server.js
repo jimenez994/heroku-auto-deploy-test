@@ -13,6 +13,7 @@ app.use(express.json());
 // })
 
 // require("./server/config/mongoose");
+app.use(express.static('client/build'));
 require("./server/config/routes")(app);
 
 app.listen(port, () => {
