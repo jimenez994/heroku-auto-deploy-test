@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './componets/weatherApp';
+import GithubApp from './componets/githubApp'; 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 class App extends Component {
@@ -23,7 +24,9 @@ class App extends Component {
               Learn React
             </a>
             <Link to="/weather"> Weather</Link>
-          <Route path="/weather" component={WeatherApp}/>
+            <Link to="/git"> Git</Link>
+            <Route path="/weather" component={WeatherApp}/>
+            <Route path="/git" component={GithubApp}/>
           </header>
         </div>
       </Router>
