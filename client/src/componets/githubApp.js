@@ -33,6 +33,7 @@ export default class githubApp extends Component {
     return (
       <div>
         <h2>github app</h2>
+        <img src="https://thumbsnap.com/t/acp0ghYY.jpg" alt="ThumbSnap" />
         <form onSubmit={this.onSubmit}>
           <input type="text" name='search' onChange={this.onChange} ></input>
           <button type="submit"> Find</button>
