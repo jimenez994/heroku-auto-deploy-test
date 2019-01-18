@@ -18,7 +18,7 @@ export default class weatherApp extends Component {
     if(isValidZip === true){
       searchType = `zip=${this.state.search}`
     }
-    Axios.get(`http://api.openweathermap.org/data/2.5/weather?${searchType}&APPID=bb9e615b330eecf16100fe0b2e388e96`)
+    Axios.get(`https://api.openweathermap.org/data/2.5/weather?${searchType}&APPID=bb9e615b330eecf16100fe0b2e388e96`)
       .then( res => {
         var tempAF = Math.ceil((res.data.main.temp - 273.15) * 9/5 + 35)
         this.setState({output: tempAF})
