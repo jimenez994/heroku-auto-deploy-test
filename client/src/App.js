@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './componets/weatherApp';
 import GithubApp from './componets/githubApp'; 
+import NinjaGold from './componets/ninjaGold/ninjaGold'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 class App extends Component {
@@ -25,8 +26,10 @@ class App extends Component {
             </a>
             <Link to="/weather"> Weather</Link>
             <Link to="/git"> Git</Link>
+            <Link to="/ninjaGold">Ninja Gold</Link>
             <Route path="/weather" component={WeatherApp}/>
             <Route path="/git" component={GithubApp}/>
+            <Route path="/ninjaGold" component={NinjaGold}/>
           </header>
         </div>
       </Router>
