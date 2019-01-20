@@ -1,29 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import uniqueid from 'uniqid'
 
 export default class ninjaGold extends Component {
   constructor(props){
     super(props);
     this.state = {
       gold: 0,
-      messages: ['frewfwe','erfefw']
+      messages: []
     }
-    // this.onClick = this.onClick.bind(this)
+  }
+  reset = () => {
+    this.setState({gold: 0, messages: []})
   }
   
   onClick = (e) => {
     e.preventDefault()
-    function goldG(a,b) {      
-      return Math.floor(Math.random() * b) + a 
-    }
     var place = e.target.name
+    const goldFound = (min,max, place) => {   
+      var goldGen = Math.floor(Math.random() * (max - min + 1)) + min;
+      var style = 'green';
+      if(goldGen < 0){style= 'red'}
+      this.setState({gold: this.state.gold + goldGen});
+      this.setState(prevState => ({ messages: [ {msg:`You went to ${place} and found $ ${goldGen} coins`, style: style} ,...prevState.messages] }))
+    }
     if(place === 'farm'){
-      this.setState({gold: this.state.gold + goldG(10,20)})
+      goldFound(10,20, 'farm')
     }else if(place === 'cave'){
-      this.setState({gold: this.state.gold + goldG(5,10)})
+      goldFound(5,10, 'cave')
     }else if(place === 'home'){
-      this.setState({gold: this.state.gold + goldG(2,5)})
+      goldFound(2,5,'home')
     }else if(place === 'casino'){
-      this.setState({gold: this.state.gold + goldG(-50,100)})
+      goldFound(-50,50,'casino')
     }
   }
   
@@ -40,7 +47,8 @@ export default class ninjaGold extends Component {
         <button name='home' onClick={this.onClick}>Home</button>
         <h4>$-50-$50</h4>
         <button name='casino' onClick={this.onClick}>Casino</button>
-        <p>{this.state.messages.map((msg) => (<li >{msg}</li>))}</p>
+        <div style={{height:'200px',overflow: 'auto'}}>{this.state.messages.map((message) => (<p style={{color: message.style}} key={uniqueid()}>{message.msg}</p>))}</div>
+        <button onClick={this.reset}>Reset</button>
       </div>
     )
   }
