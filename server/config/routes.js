@@ -1,25 +1,19 @@
 
 const path = require("path");
+const Post = require("../controllers/postController");
 
 module.exports = (app) => {
-    
-    
-    // // Server static assets if in production
-    // if(process.env.NODE_ENV === 'production'){
-        // Set static folder
-        
-        // // Any route that gets hit will go to the index.html 
-        // app.get('*', (req, res) => {
-        //     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-        // })
-        app.all("*", (req, res,next) => {
-            res.sendFile(path.resolve("./client/build/index.html"));
-        })
-        
-    // }
-        
-        app.get('/user', (req, res) => {
-            res.send({message: "great!, is it working?"});
-        })
+
+    // post
+    app.post("/api/post/create", Post.create);
+    app.get("/api/post/all", Post.all)
+    app.delete("/api/post/delete/:id", Post.delete);
+    app.get("/api/post/:id", Post.findById);
+    app.put('/api/post/update/:id', Post.updateById)
+
+    app.all("*", (req, res,next) => {
+        res.sendFile(path.resolve("./client/build/index.html"));
+    })
+
 
 }
