@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('Post');
+const Comment = mongoose.model("Comment")
 
 module.exports = {
     findById: (req, res) => {
@@ -24,7 +25,11 @@ module.exports = {
     },
     delete: (req, res) => {
         Post.findOneAndDelete({ _id: req.params.id})
-            .then(post => res.json({post: 'deleted'}))
+            .then(post => {
+                Comment.deleteMany({_post: req.params.id})
+                    .then(post => res.json({post: "Successfully delete"}))
+                    .catch(err => res.status(405).json({error:"No comments found to delete"}))
+                })
             .catch(err => res.status(400).json(err))
     }
 
