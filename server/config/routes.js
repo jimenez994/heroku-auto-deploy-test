@@ -19,6 +19,5 @@ module.exports = (app) => {
     app.all("*", (req, res,next) => {
         res.sendFile(path.resolve("./client/build/index.html"));
     })
-
-
+    
 }

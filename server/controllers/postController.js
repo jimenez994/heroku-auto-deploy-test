@@ -20,7 +20,7 @@ module.exports = {
     },
     all: (req, res) => {
         Post.find({})
-            .then(posts => res.json(posts))
+            .then(posts => res.json(posts.reverse()))
             .catch(err => res.status(401).json({error: "Posts not found"}))
     },
     delete: (req, res) => {

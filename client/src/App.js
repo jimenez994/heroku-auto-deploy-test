@@ -18,11 +18,11 @@ class App extends Component {
             <p>
               Adding react to the project is a success!
             </p>
-            <Link to="/login">login</Link>
-            <Link to="/weather"> Weather</Link>
-            <Link to="/git"> Git</Link>
-            <Link to="/ninjaGold">Ninja Gold</Link>
-            <Link to="/wall">Wall</Link>
+            <Link to="/login"> login </Link> 
+            <Link to="/weather"> Weather </Link>
+            <Link to="/git"> Git </Link>
+            <Link to="/ninjaGold"> Ninja Gold </Link>
+            <Link to="/wall"> Wall </Link>
             <Route path="/wall" component={Wall}/>
             <Route path="/login" component={Posts}/>
             <Route path="/weather" component={WeatherApp}/>
