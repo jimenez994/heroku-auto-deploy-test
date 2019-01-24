@@ -32,13 +32,14 @@ export default class Wall extends Component {
       .then(res => this.setState({posts: updatedPosts}))
       .catch(err => console.log(err))
   } 
-  addComment = (e) => {
-
+  addComment = (postId, comment) => {
+    console.log(postId);
+    console.log(comment);
   }
   render() {
     let postsContent;
     if(this.state.posts != null){
-      postsContent = <Feed posts={this.state.posts} deletePost={this.deletePost}/>
+      postsContent = <Feed posts={this.state.posts} addComment={this.addComment} deletePost={this.deletePost}/>
     }
     return (
       <div>

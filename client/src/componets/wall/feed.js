@@ -5,8 +5,8 @@ import Post from './post'
 class Feed extends Component {
 
   render () {
-    const {posts, deletePost} = this.props
-    return posts.map(post => <Post key={post._id} post={post}  deletePost={deletePost}/>)
+    const {posts, deletePost, addComment} = this.props
+    return posts.map(post => <Post key={post._id} post={post} addComment={addComment}  deletePost={deletePost}/>)
   }
 }
 Feed.propTypes = {
