@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
+const keys = require("./keys")
 
-mongoose.connect("mongodb://jimenez:jimenez@zeuscluster0-shard-00-00-oosq7.mongodb.net:27017,zeuscluster0-shard-00-01-oosq7.mongodb.net:27017,zeuscluster0-shard-00-02-oosq7.mongodb.net:27017/test?ssl=true&replicaSet=ZeusCluster0-shard-0&authSource=admin&retryWrites=true", { useNewUrlParser: true });
+mongoose.connect(keys.mongoURL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 var models_path = __dirname + "/../models";
