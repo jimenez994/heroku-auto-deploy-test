@@ -21,8 +21,9 @@ module.exports = (app) => {
 
     // user
     app.post('/api/register', User.register);
-    app.get('/api/allUsers', auth, User.all);
-    app.post('/api/login', User.login)
+    app.get('/api/allUsers', User.all);
+    app.post('/api/login', User.login);
+    app.post('/api/user/delete', User.delete);
 
     app.all("*", (req, res,next) => {
         res.sendFile(path.resolve("./client/build/index.html"));

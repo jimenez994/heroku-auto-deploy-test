@@ -31,6 +31,7 @@ module.exports = {
   login: (req, res) => {
     User.findOne({ email: req.body.email })
       .then(user => {
+        if(!user) {return res.json({errors:"blas"})}
         bcrypt.compare(req.body.password, user.password)
           .then(isMatch => {
             if(isMatch){
@@ -48,8 +49,13 @@ module.exports = {
           } )
       })
       .catch(err =>
-        res.status(404).json({ errors: "Email is not registered" })
+        res.status(400).json(err)
       );
+  },
+  delete: (req, res) => {
+    User.findOneAndDelete(req.body._id)
+      .then(result => res.json({success: true, userDeleted: req.body._id}))
+      .catch(err => console.log(err))
   },
 
   all: (req, res) => {
